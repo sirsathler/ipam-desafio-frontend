@@ -1,7 +1,7 @@
 import './Form.scss'
 
 import { useEffect, useState } from "react"
-import { fetchCityInfo, getCityList, getUFList } from "../../Services/UFService";
+import { fetchCityInfo, getCityList, getUFList } from "../../Services/APIService";
 import Selector from "../Selector/Selector";
 
 
@@ -32,12 +32,17 @@ function Form() {
         return
     }
 
-    return (
-        <div className="selectors-form">
-            <Selector label="Estados" menuItems={ufList} handleChange={handleChange} type="uf" />
-            <Selector label="Cidade" menuItems={cityList} handleChange={showCityInfo} type="ct" />
-        </div>
-    )
+    if (ufList.length > 0) {
+        return (
+            <div className="selectors-form">
+                <Selector label="Estados" menuItems={ufList} handleChange={handleChange} type="uf" />
+                {
+                    cityList.length != 0 &&
+                    <Selector label="Cidade" menuItems={cityList} handleChange={showCityInfo} type="ct" />
+                }
+            </div>
+        )
+    }
 }
 
 export default Form;
