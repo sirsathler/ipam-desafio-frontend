@@ -1,11 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
-import Header from './Components/Header/Header';
 import './Global/CommonClasses.scss';
+
+//COMPONENTS
+import Header from './Components/Header/Header';
+import Body from './Components/Form/Form';
 
 function App() {
   return (
-    <Header/>
+    <div className='container'>
+
+
+      <Header />
+      <Body />
+    </div>
+    
   );
 }
 
