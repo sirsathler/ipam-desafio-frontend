@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { fetchCityInfo, fetchUFInfo, getCityList, getUFList } from "../../Services/APIService";
 import Selector from "../Selector/Selector";
 import UFInfo from '../UFInfo/UFInfo';
+import CityInfo from '../CityInfo/CityInfo';
 
 
 function Form() {
@@ -36,6 +37,10 @@ function Form() {
     }
 
     if (ufList.length > 0) {
+        try {
+            console.log(city)
+        }
+        catch { }
         return (
             <>
                 <div className="selectors-form">
@@ -47,7 +52,11 @@ function Form() {
                 </div>
                 {
                     uf &&
-                    <UFInfo nome={uf.nome} sigla={uf.regiao.sigla} regiao={uf.regiao.nome} />
+                    <UFInfo nome={uf.nome} sigla={uf.sigla} regiao={uf.regiao.nome} numberOfCities={cityList.length} />
+                }
+                {
+                    city &&
+                    < CityInfo nome={city.nome} region={uf.regiao.nome} uf={uf.nome} microregion={city.municipio.microrregiao.nome} mesoregion={city.municipio.microrregiao.mesorregiao.nome} />
                 }
             </>
         )
