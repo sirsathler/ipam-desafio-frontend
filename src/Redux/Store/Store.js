@@ -1,10 +1,15 @@
-import { createStore, combineReducers } from "redux";
-import SelectorReducer from "../Reducers/Selector.reducer";
+import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers } from "redux";
+import CitySelectorReducer from "../Reducers/CitySelector.reducer";
+import UFSelectorReducer from "../Reducers/UFSelector.reducer";
 
 const rootReducer = combineReducers({
-    selector: SelectorReducer
+    selectedUF: UFSelectorReducer,
+    selectedCity: CitySelectorReducer
 })
 
-const store = createStore(rootReducer)
+const store = configureStore({
+    reducer: rootReducer
+})
 
 export default store

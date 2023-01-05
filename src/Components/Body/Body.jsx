@@ -6,6 +6,9 @@ import Selector from "../Selector/Selector";
 import UFCard from '../InfoCards/UFCard';
 import CityCard from '../InfoCards/CityCard';
 
+import { useDispatch } from 'react-redux';
+import { selectCity, selectUF } from '../../Redux/Actions/Selector.actions';
+
 
 function Body() {
     const [ufList, setUFList] = useState([])
@@ -13,6 +16,8 @@ function Body() {
 
     const [uf, setUF] = useState()
     const [city, setCity] = useState()
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const fetchUF = async () => {
@@ -29,11 +34,15 @@ function Body() {
         setUF(ufSelected)
         setcityList(cities)
         setCity("")
+
+        dispatch(selectUF(ufSelected))
     }
 
     const showCityInfo = async (e) => {
         const cityInfo = await fetchCityInfo(e.target.value)
         setCity(cityInfo)
+
+        dispatch(selectCity(cityInfo))
         return
     }
 
@@ -49,24 +58,17 @@ function Body() {
                 </div>
                 {
                     uf &&
-                    <UFCard
-                        type="uf"
-                        nome={uf.nome}
-                        sigla={uf.sigla}
-                        regiao={uf.regiao.nome}
-                        numberOfCities={cityList.length} />
+                    <UFCard />
                 }
                 {
                     city &&
-                    <CityCard
-                        type="city"
-                        nome={city.nome}
-                        region={uf.regiao.nome}
-                        uf={uf.nome}
-                        microregion={city.municipio.microrregiao.nome}
-                        mesoregion={city.municipio.microrregiao.mesorregiao.nome}
-                        id={city.municipio.id}
-                    />
+                    <CityCard />
+                    // nome={city.nome}
+                    // region={uf.regiao.nome}
+                    // uf={uf.nome}
+                    // microregion={city.municipio.microrregiao.nome}
+                    // mesoregion={city.municipio.microrregiao.mesorregiao.nome}
+                    // id={city.municipio.id}
                 }
             </>
         )
