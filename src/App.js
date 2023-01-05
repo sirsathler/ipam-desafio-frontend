@@ -1,5 +1,5 @@
 import './App.css';
-import './Global/CommonClasses.scss';
+import './Global/GlobalClasses.scss';
 
 //COMPONENTS
 import Header from './Components/Header/Header';

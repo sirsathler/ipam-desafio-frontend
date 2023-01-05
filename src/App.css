@@ -8,6 +8,11 @@
   src: url('./Assets/Fonts/Inter.ttf');
 }
 
+* {
+  text-decoration: none;
+  color: #000;
+}
+
 html,
 body,
 div,

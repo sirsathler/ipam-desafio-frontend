@@ -1,4 +1,5 @@
 import './Body.scss'
+import '../InfoCards/InfoCards.scss'
 
 import { useEffect, useState } from "react"
 import { fetchCityInfo, fetchUFInfo, getCityList, getUFList } from "../../Services/APIService";
@@ -12,13 +13,15 @@ import Loading from '../Loading/Loading';
 
 
 function Body() {
+    //REDUX
+    const dispatch = useDispatch()
+
+    //STATES
     const [ufList, setUFList] = useState([])
     const [cityList, setCityList] = useState([])
-
     const [uf, setUF] = useState("")
     const [city, setCity] = useState("")
 
-    const dispatch = useDispatch()
 
     useEffect(() => {
         const fetchUF = async () => {
