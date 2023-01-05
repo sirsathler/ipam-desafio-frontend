@@ -7,6 +7,7 @@ export async function getUFList() {
     }
     catch (err) {
         console.log(err)
+        throw new Error("Não foi possível se conectar a API do IBGE!")
     }
 }
 
@@ -17,6 +18,7 @@ export async function getCityList(uf) {
     }
     catch (err) {
         console.log(err)
+        throw new Error("Não foi possível se conectar a API do IBGE!")
     }
 }
 
@@ -27,6 +29,7 @@ export async function fetchUFInfo(uf) {
     }
     catch (err) {
         console.log(err)
+        throw new Error("Não foi possível se conectar a API do IBGE!")
     }
 }
 
@@ -37,5 +40,6 @@ export async function fetchCityInfo(cityId) {
     }
     catch (err) {
         console.log(err)
+        throw new Error("Não foi possível se conectar a API do IBGE!")
     }
 }

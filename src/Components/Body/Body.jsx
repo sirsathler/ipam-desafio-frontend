@@ -8,6 +8,7 @@ import CityCard from '../InfoCards/CityCard';
 
 import { useDispatch } from 'react-redux';
 import { selectCity, selectUF } from '../../Redux/Actions/Selector.actions';
+import Loading from '../Loading/Loading';
 
 
 function Body() {
@@ -21,19 +22,24 @@ function Body() {
 
     useEffect(() => {
         const fetchUF = async () => {
-            const ufs = await getUFList()
-            setUFList(ufs)
+            try {
+                const ufs = await getUFList()
+                setUFList(ufs)
+            }
+            catch (err) {
+                console.log(err)
+            }
         }
 
         fetchUF()
     }, [])
 
     const handleChange = async (e) => {
+        setCity("")
         const ufSelected = await fetchUFInfo(e.target.value)
         const cities = await getCityList(ufSelected.sigla)
         setUF(ufSelected)
         setCityList(cities)
-        setCity("")
 
         dispatch(selectUF(ufSelected))
     }
@@ -69,6 +75,11 @@ function Body() {
                 {uf && <UFCard />}
                 {city && <CityCard />}
             </>
+        )
+    }
+    else {
+        return (
+            <Loading />
         )
     }
 }
