@@ -12,10 +12,10 @@ import { selectCity, selectUF } from '../../Redux/Actions/Selector.actions';
 
 function Body() {
     const [ufList, setUFList] = useState([])
-    const [cityList, setcityList] = useState([])
+    const [cityList, setCityList] = useState([])
 
-    const [uf, setUF] = useState()
-    const [city, setCity] = useState()
+    const [uf, setUF] = useState("")
+    const [city, setCity] = useState("")
 
     const dispatch = useDispatch()
 
@@ -32,7 +32,7 @@ function Body() {
         const ufSelected = await fetchUFInfo(e.target.value)
         const cities = await getCityList(ufSelected.sigla)
         setUF(ufSelected)
-        setcityList(cities)
+        setCityList(cities)
         setCity("")
 
         dispatch(selectUF(ufSelected))
@@ -50,26 +50,24 @@ function Body() {
         return (
             <>
                 <div className="selectors-form">
-                    <Selector label="Estados" menuItems={ufList} handleChange={handleChange} type="uf" />
+                    <Selector
+                        label="Estados"
+                        menuItems={ufList}
+                        handleChange={handleChange}
+                        type="uf"
+                        value={uf.sigla ?? ""} />
                     {
                         cityList.length > 0 &&
-                        <Selector label="Cidade" menuItems={cityList} handleChange={showCityInfo} type="ct" />
+                        <Selector
+                            label="Cidade"
+                            menuItems={cityList}
+                            handleChange={showCityInfo}
+                            type="ct"
+                            value={city.id ?? ""} />
                     }
                 </div>
-                {
-                    uf &&
-                    <UFCard />
-                }
-                {
-                    city &&
-                    <CityCard />
-                    // nome={city.nome}
-                    // region={uf.regiao.nome}
-                    // uf={uf.nome}
-                    // microregion={city.municipio.microrregiao.nome}
-                    // mesoregion={city.municipio.microrregiao.mesorregiao.nome}
-                    // id={city.municipio.id}
-                }
+                {uf && <UFCard />}
+                {city && <CityCard />}
             </>
         )
     }

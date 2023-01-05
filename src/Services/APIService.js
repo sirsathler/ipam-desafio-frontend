@@ -32,8 +32,8 @@ export async function fetchUFInfo(uf) {
 
 export async function fetchCityInfo(cityId) {
     try {
-        const response = await axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${cityId}/distritos`)
-        return response.data[0]
+        const response = await axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${cityId}`)
+        return response.data
     }
     catch (err) {
         console.log(err)

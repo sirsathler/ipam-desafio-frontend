@@ -1,8 +1,8 @@
 import { FormControl, InputLabel, Menu, MenuItem, Select } from "@mui/material";
+import { useState } from "react";
 import './Selector.scss'
 
 function Selector(props) {
-
     return (
         <div className="selector-wrapper">
             <div className="selector-wrapper__selector">
@@ -12,11 +12,12 @@ function Selector(props) {
                         id="uf-select"
                         label={props.label}
                         onChange={props.handleChange}
+                        value={props.value}
                     >
                         {
                             props.menuItems.map(menuItem => {
                                 if (props.type == "uf") {
-                                    return <MenuItem key={menuItem.sigla} value={menuItem.sigla}>{menuItem.nome}</MenuItem>
+                                    return <MenuItem key={menuItem.sigla} value={menuItem.sigla} >{menuItem.nome}</MenuItem>
                                 }
                                 if (props.type == "ct")
                                     return <MenuItem key={menuItem.id} value={menuItem.id}>{menuItem.nome}</MenuItem>
