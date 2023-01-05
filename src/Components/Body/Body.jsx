@@ -75,7 +75,7 @@ function Body() {
                             value={city.id ?? ""} />
                     }
                 </div>
-                {uf && <UFCard />}
+                {uf && <UFCard numberOfCities={cityList.length} />}
                 {city && <CityCard />}
             </>
         )

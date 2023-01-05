@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 
-function UFCard() {
+function UFCard(props) {
     const selectedUF = useSelector(state =>  state.selectedUF)
     
     return (
@@ -13,7 +13,7 @@ function UFCard() {
                         <strong className="card-info__label">Região: </strong><span>{selectedUF.regiao.nome}</span>
                     </div>
                     <div className="card-info__div">
-                        <strong className="card-info__label">Número de Municípios: </strong><span>{selectedUF.numberOfCities}</span>
+                        <strong className="card-info__label">Número de Municípios: </strong><span>{props.numberOfCities}</span>
                     </div>
                     <div className="card-info__div">
                         <strong className="card-info__label">UF: </strong><span>{selectedUF.sigla}</span>
