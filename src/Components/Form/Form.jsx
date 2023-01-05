@@ -3,8 +3,8 @@ import './Form.scss'
 import { useEffect, useState } from "react"
 import { fetchCityInfo, fetchUFInfo, getCityList, getUFList } from "../../Services/APIService";
 import Selector from "../Selector/Selector";
-import UFInfo from '../UFInfo/UFInfo';
-import CityInfo from '../CityInfo/CityInfo';
+import UFCard from '../InfoCard/UFCard';
+import CityCard from '../InfoCard/CityCard';
 
 
 function Form() {
@@ -37,10 +37,6 @@ function Form() {
     }
 
     if (ufList.length > 0) {
-        try {
-            console.log(city)
-        }
-        catch { }
         return (
             <>
                 <div className="selectors-form">
@@ -52,11 +48,23 @@ function Form() {
                 </div>
                 {
                     uf &&
-                    <UFInfo nome={uf.nome} sigla={uf.sigla} regiao={uf.regiao.nome} numberOfCities={cityList.length} />
+                    <UFCard
+                        type="uf"
+                        nome={uf.nome}
+                        sigla={uf.sigla}
+                        regiao={uf.regiao.nome}
+                        numberOfCities={cityList.length} />
                 }
                 {
                     city &&
-                    < CityInfo nome={city.nome} region={uf.regiao.nome} uf={uf.nome} microregion={city.municipio.microrregiao.nome} mesoregion={city.municipio.microrregiao.mesorregiao.nome} />
+                    <CityCard
+                        type="city"
+                        nome={city.nome}
+                        region={uf.regiao.nome}
+                        uf={uf.nome}
+                        microregion={city.municipio.microrregiao.nome}
+                        mesoregion={city.municipio.microrregiao.mesorregiao.nome}
+                    />
                 }
             </>
         )

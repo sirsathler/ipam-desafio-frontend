@@ -8,8 +8,6 @@ import Body from './Components/Form/Form';
 function App() {
   return (
     <div className='container'>
-
-
       <Header />
       <Body />
     </div>

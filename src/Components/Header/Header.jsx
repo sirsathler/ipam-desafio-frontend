@@ -4,7 +4,7 @@ function App() {
     return (
         <div className="header">
             <div className="title-wrapper">
-                <p className='title-wrapper__username primary-title'>sirsathler</p>
+                <p className='title-wrapper__username primary-title'>sirsathler/</p>
                 <p className='title-wrapper__repository'>desafio-frontend</p>
                 <p className='title-wrapper__linkedin'>https://wwww.linkedin.com.br/matheus-sathler</p>
             </div>
