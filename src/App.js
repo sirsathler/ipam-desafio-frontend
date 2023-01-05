@@ -3,7 +3,7 @@ import './Global/CommonClasses.scss';
 
 //COMPONENTS
 import Header from './Components/Header/Header';
-import Body from './Components/Form/Form';
+import Body from './Components/Body/Body';
 
 function App() {
   return (

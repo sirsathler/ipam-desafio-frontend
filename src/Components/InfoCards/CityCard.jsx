@@ -16,6 +16,11 @@ function CityCard(props) {
                     </div>
                 </div>
             </div>
+
+            <div className="info-card__chart">
+                <img src={`https://servicodados.ibge.gov.br/api/v3/malhas/municipios/${props.id}`} alt="city-chart" />
+            </div>
+
         </div>
     )
 }

@@ -1,13 +1,13 @@
-import './Form.scss'
+import './Body.scss'
 
 import { useEffect, useState } from "react"
 import { fetchCityInfo, fetchUFInfo, getCityList, getUFList } from "../../Services/APIService";
 import Selector from "../Selector/Selector";
-import UFCard from '../InfoCard/UFCard';
-import CityCard from '../InfoCard/CityCard';
+import UFCard from '../InfoCards/UFCard';
+import CityCard from '../InfoCards/CityCard';
 
 
-function Form() {
+function Body() {
     const [ufList, setUFList] = useState([])
     const [cityList, setcityList] = useState([])
 
@@ -28,6 +28,7 @@ function Form() {
         const cities = await getCityList(ufSelected.sigla)
         setUF(ufSelected)
         setcityList(cities)
+        setCity("")
     }
 
     const showCityInfo = async (e) => {
@@ -64,6 +65,7 @@ function Form() {
                         uf={uf.nome}
                         microregion={city.municipio.microrregiao.nome}
                         mesoregion={city.municipio.microrregiao.mesorregiao.nome}
+                        id={city.municipio.id}
                     />
                 }
             </>
@@ -71,4 +73,4 @@ function Form() {
     }
 }
 
-export default Form;
+export default Body;

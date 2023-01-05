@@ -16,14 +16,13 @@ function UFCard(props) {
                         <strong className="card-info__label">UF: </strong><span>{props.sigla}</span>
                     </div>
                 </div>
-
-                {
-                    props.img &&
-                    <div className="card-image">
-                        <img src={props.uf.image} alt="uf-image" />
-                    </div>
-                }
             </div>
+
+
+            <div className="info-card__chart">
+                <img src={`https://servicodados.ibge.gov.br/api/v3/malhas/estados/${props.sigla}`} alt="uf-chart" />
+            </div>
+
         </div>
     )
 }
